@@ -44,13 +44,13 @@ public class ProductIDServlet extends HttpServlet {
 			out.println("<div id=\"content\">");
 			out.println(
 					"<div>"
-					+ "<div style=\"float:left; width:250px;border-radius:15px;\">"
-					+ "<img style=\"border: 1px solid #d7dadd;\" alt =\"SOME ITEMS\" src =\"http://localhost:8080/ua.shop.vitaly/"+ product.getImg() +"\" width=\"250\" height=\"230\">"
+					+ "<div class=\"ProductByID\">"
+					+ "<img style=\"border: 1px solid #d7dadd; border-radius: 20px;\" alt =\"SOME ITEMS\" src =\"http://localhost:8080/ua.shop.vitaly/"+ product.getImg() +"\" width=\"250\" height=\"230\">"
 					+ "<div style=\"margin-top:10px;\">"
 					+"<form action=\"AddToCardServlet\" method=\"post\">"
 					+ "<input type=\"hidden\" name =\"userID\" value=\""+user.getId()+"\">"
 					+ "<input type=\"hidden\" name =\"productID\"value=\""+url+"\">"
-					+ "<button style=\"width:100%\" type=\"submit\" value=\"click here\">Buy me pls</button>"
+					+ "<button id=\"ButtonBUY\" type=\"submit\" value=\"click here\">Buy me pls</button>"
 					+"</form>"
 					+ "</div>" 
 					+ "</div>" 
@@ -71,7 +71,7 @@ public class ProductIDServlet extends HttpServlet {
 			out.println("<div id=\"content\">");
 			out.println(
 					"<div>"
-					+ "<div style=\"float:left; width:250px;\">"
+					+ "<div class=\"ProductByID\">"
 					+ "<img style=\"border: 1px solid #d7dadd;border-radius:15px;\" alt =\"SOME ITEMS\" src =\"http://localhost:8080/ua.shop.vitaly/"+ product.getImg() +"\" width=\"250\" height=\"230\">"
 					+ "<div style=\"margin-top:10px;\"><button id=\"login2\" style=\"width:100%\">If you want to buy me, pls log in :)</button></div>" 
 					+ "</div>" 

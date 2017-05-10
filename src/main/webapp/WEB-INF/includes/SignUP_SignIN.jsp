@@ -4,15 +4,15 @@
 <div style="float:left; padding-right: 20px;">	
 	<c:choose>
 		<c:when test="${empty user}">
-			<button id="registration" style="margin-right: 15px;">Sign up</button>
+			<button id="registration">Sign up</button>
 			<button id="login">Sign in</button>
 		</c:when>
 		<c:when test ="${user.login=='Admin'}">
 			<div style="float:left;">
-				<div style="float:left; margin-right:25px; margin-top: 3px;">
+				<div style="float:left; margin-right:25px; margin-top: 5px;">
 					<b style="font-size:14px;">${user.login}</b>
 					<a href="${pageContext.request.contextPath}/productcard" class="active">
-						<img alt ="Shop card" id="shop-image" src ="views/images/cart1.png" width="30" height="20">
+						<img alt ="Shop card" class="shop-image" src ="views/images/cart1.png" width="30" height="20">
 					</a>
 				</div>
 				<div style="float:left; margin-right:20px">
@@ -30,10 +30,10 @@
 		</c:when>
 		<c:otherwise>
 			 <form method = "post" action ="logout">
-			 	<div style="float:left; margin-right:15px;">
+			 	<div style="float:left; margin-right:15px;margin-top: 5px;">
 			 		<b style="font-size:14px;">${user.login}</b>
 			 		<a href="${pageContext.request.contextPath}/productcard" class="active">
-			 			<img alt ="Shop card" id="shop-image" src ="views/images/cart1.png" width="30" height="20">
+			 			<img alt ="Shop card" class="shop-image" src ="views/images/cart1.png" width="30" height="20">
 			 		</a>
 			 	</div>
 				<button id="logout">Logout</button>

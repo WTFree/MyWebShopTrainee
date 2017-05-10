@@ -82,7 +82,7 @@
 		<div style="height:100px">
 			<div style="float:left">
 				<a href="${pageContext.request.contextPath}">
-					<img alt ="Logo Of Shop" id="top-image" src ="views/images/SHoP.png" width="120" height="80">
+					<img alt ="Logo Of Shop" id="top-image" src ="views/images/SHoP.png">
 				</a>
 			</div>
 			<div style="float:right; padding: 25px 0;">

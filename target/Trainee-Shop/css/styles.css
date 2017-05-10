@@ -269,8 +269,7 @@ input[type="password"]{
 	padding: 0 10px;
 	vertical-align: top;
 }
-.Remove{
-	background: #d9dabb; 
+.Remove{ 
     width: 150px; 
     margin: 0 10px 10px 0;
     padding: 10px 0; 
@@ -278,7 +277,8 @@ input[type="password"]{
     display: inline-block; 
 }
 .Remove img{
-	border: 2px solid #8b8e4b; 
+	border: 2px solid #8b8e4b;
+	border-radius : 25px; 
 }
 .Remove p {
 	margin:0;
