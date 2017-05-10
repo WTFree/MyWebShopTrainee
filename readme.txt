@@ -3,3 +3,12 @@
 	1)тиждень на JDBC, MySQL etc...
 	2)5 днів на Session, та базових знань по JSTL, JSP
 	3)На корзину/продукти/окремі сторінки під продукти/ адмін меню/ та загальний вигляд сайту... 
+
+Як запустити: 
+
+	    1)Йдемо до директорії databases_plus_WAR і запускаємо ua.shop.vitaly(SQL Text File)		
+
+             Перехеодим по наступних класах і виправляємо свій "login" i "password" до бази даних
+	     1)src\main\java\models\user\DAO\JDBCUserDAO
+             2)src\main\java\models\product\DAO\JDBCProductDAO
+3) 

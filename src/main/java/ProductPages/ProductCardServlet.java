@@ -48,7 +48,7 @@ public class ProductCardServlet extends HttpServlet {
 					+"<form action=\"RemoveFromCardServlet\" method=\"post\">"+
 			  			"<input type=\"hidden\" name=\"userID\" value=\""+ id +"\">"+
 			  			"<input type=\"hidden\" name=\"prodID\" value=\""+x.getId()+"\">"+
-			  			"<div style=\"margin-top:10px;\"><button style=\"width:30%\">>>Remove<<</button></div>"+
+			  			"<div style=\"margin-top:10px;\"><button style=\"width:100%\">>>Remove<<</button></div>"+
 			  		"</form>"+ 
 			  		"</div>");
 		}
