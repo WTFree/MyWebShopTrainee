@@ -40,11 +40,10 @@ public class ProductCardServlet extends HttpServlet {
 		out.print("<h1>It's your basket "+user.getLogin()+"</h1>");
 		out.print("<div style=\"text-align:center\">");
 		for(Product x : basketList){
-			out.print("<div class=\"Remove\">"
-					+"<p><img alt =\"SOME ITEMS\" class=\"top-image\" src =\"http://localhost:8080/ua.shop.vitaly/"+x.getImg()+"\" style=\"border-radius: 25px 25px 0 0;\" width=\"150\" height=\"140\"</p>"
-					+ "<h1>Name of product : "+x.getName() +"</h1>"
-					+ "<h1>Price of product: "+ x.getPrice() +"</h1>"
-					+ "<h1>Type of product: "+ x.getType()+"</h1>"
+			out.print("<div class=\"Remove\" style=\" background-collor :yellow\">"
+					+"<p><img alt =\"SOME ITEMS\" class=\"top-image\" src =\"http://localhost:8080/ua.shop.vitaly/"+x.getImg()+"\" width=\"140\" height=\"150\"</p>"
+					+ "<h1>"+x.getType()+" : "+x.getName() +"</h1>"
+					+ "<p>"+ x.getPrice() +"</p>"
 					+"<form action=\"RemoveFromCardServlet\" method=\"post\">"+
 			  			"<input type=\"hidden\" name=\"userID\" value=\""+ id +"\">"+
 			  			"<input type=\"hidden\" name=\"prodID\" value=\""+x.getId()+"\">"+

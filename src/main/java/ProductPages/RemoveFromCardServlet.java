@@ -27,15 +27,14 @@ public class RemoveFromCardServlet extends HttpServlet {
 		String userID = request.getParameter("userID");
 		String prodID = request.getParameter("prodID");
 		
+		String firstRedirectUrl = request.getContextPath()+"/productcard";
+		
+		
 		User user = (User) request.getSession().getAttribute("user");
 		if(Integer.parseInt(userID) != user.getId()){
 			response.sendRedirect("ErrorPage.jsp");;
 		}else{
-			request.getRequestDispatcher("/WEB-INF/includes/header.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			out.print("<a href=\"http://localhost:8080/ua.shop.vitaly/productcard\"><button value=\"back\">>>>Back<<<</button></a>");
-			request.getRequestDispatcher("/WEB-INF/includes/footer.jsp").include(request, response);
-			out.close();
+			response.sendRedirect(firstRedirectUrl);
 			JDBCProductDAO dao = new JDBCProductDAO();
 			dao.RemoveFromBasket(Integer.parseInt(userID), Integer.parseInt(prodID));
 		}

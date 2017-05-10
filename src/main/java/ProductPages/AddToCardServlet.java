@@ -29,15 +29,13 @@ public class AddToCardServlet extends HttpServlet {
 		if(Integer.parseInt(userID) != user.getId()){
 			response.sendRedirect("ErrorPage.jsp");;
 		}else{
-		request.getRequestDispatcher("/WEB-INF/includes/header.jsp").include(request, response);
-		PrintWriter out = response.getWriter();
-		out.print("<button onclick=\"history.back()\" value=\"back\"> >>>Back<<< </button>");
-		request.getRequestDispatcher("/WEB-INF/includes/footer.jsp").include(request, response);
-		out.close();
-		
-		JDBCProductDAO dao = new JDBCProductDAO();
-		dao.AddToBasket(Integer.parseInt(userID), Integer.parseInt(productID));
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+			
+			String firstRedirectUrl = request.getContextPath()+"ProductID?id="+productID;
+			response.sendRedirect(firstRedirectUrl);
+
+			JDBCProductDAO dao = new JDBCProductDAO();
+			dao.AddToBasket(Integer.parseInt(userID), Integer.parseInt(productID));
+			
 		}
 	}
 
