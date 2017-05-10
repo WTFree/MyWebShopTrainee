@@ -1,0 +1,285 @@
+body {
+	color: #8f8f8f;
+	font: 12px Tahoma, sans-serif;
+	/*background-color: #f8f8f8;*/
+	/*background: url("../views/images/1234567125.jpg");*/
+	margin: 0;
+}
+
+h1 {font-size:18px;}
+
+header{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+button {
+	border-radius:5px;
+	cursor: pointer;
+	color: #fff;
+	background-color: #29c5e6;
+	border: none;
+	height: 30px;
+	font-family: 'Oswald', sans-serif;
+}
+input[type="submit"]{
+	color: #fff;
+	background-color: #29c5e6;
+	border: none;
+	height: 30px;
+	font-family: 'Oswald', sans-serif;
+}
+
+p{
+	margin:20px 0;
+}
+form[name="search"]{
+	float:right;
+	margin: 12px;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	list-style-position: inside;
+	font: 14px 'Oswald', sans-serif;
+	padding: 10px;
+}
+
+#selectBackground ul li a{
+	color:#86898e;
+	display: block;
+    font-size: 1.17em;
+	padding: 13px 30px;
+    font-weight: bold;
+}
+
+#selectBackground ul li a:hover{
+	background: #d1eeff;
+}
+
+#selectBackground ul li a.active {
+  background: #29c5e6;
+  color: #fff;
+}
+
+.top-menu{
+	border: 1px solid #d7dadd;
+	
+}
+
+.top-menu li a{
+	text-decoration:none;
+} 
+
+.top-menu li {
+	display: table-cell;
+	margin: 0;
+	padding:0px;
+}
+
+.top-menu li.active {
+	background: #29c5e6;
+	color: #fff;
+}
+
+.top-menu a {
+	color: #b2b2b2;
+}
+
+div[name="footer"]{
+	float:bottom;
+	margin-left:auto;
+	margin-right:auto;
+	width:10%;
+	max-width:100px;
+}
+div[id="navMenu"]{
+	width:70%;
+	max-width:1200px;
+	min-width:750px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#registration-login{
+	position:absolute;
+	right:33%;
+	top:0%;
+}
+
+#registration-login a{
+	color: #b2b2b2;
+}
+#registration-login li{
+	display: inline-block;
+	padding: 10px 30px;
+	margin: 0;
+}
+
+.modal-shadow-registration{
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background:#000;
+  opacity:0.5;
+  display:none;
+}
+.modal-window-registration{
+  position:absolute;
+  top:38%;
+  left:50%;
+  margin:-100px 0 0 -200px;
+  width:370px;
+  height:220px;
+  padding:30px;
+  border-radius:10px;
+  display:none;
+  background:#fff;
+}
+.close-registration{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:20px;
+  height:20px;
+  border-radius:3px;
+  cursor:pointer;
+  text-align:center;
+  color:#fff;
+  font:normal 14px/20px Arial, Helvetica, sans-serif;
+  background:#555;
+}
+
+.modal-shadow-login{
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background:#000;
+  opacity:0.5;
+  display:none;
+}
+.modal-window-login{
+  position:absolute;
+  top:38%;
+  left:50%;
+  margin:-100px 0 0 -200px;
+  width:295px;
+  height:200px;
+  padding:30px;
+  border-radius:10px;
+  display:none;
+  background:#fff;
+}
+.close-login{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:20px;
+  height:20px;
+  border-radius:3px;
+  cursor:pointer;
+  text-align:center;
+  color:#fff;
+  font:normal 14px/20px Arial, Helvetica, sans-serif;
+  background:#555;
+}
+.field-registration{
+	clear:both;
+	text-align:right;
+	line-height:30px;
+}
+label{
+	float:left;
+	padding-right:10px;
+}
+.main-registration{
+}
+.field-login{
+	clear:both;
+	text-align:right;
+	line-height:30px;
+}
+label{
+	float:left;
+	padding-right:10px;
+}
+.main-login{
+	float:left;
+}
+#wrapper{
+	max-width:960px;
+	margin:auto;
+}
+#content{
+	margin-top:30px;
+	margin-left:auto;
+	margin-right:auto;
+	min-height:400px;
+}
+#RegistrationServlet{
+	color: #8f8f8f;
+	font: 12px Tahoma, sans-serif;
+	background-color: #f8f8f8;
+	margin: 0;
+}
+#ErrorPageJSP{
+  position:absolute;
+  top:38%;
+  left:44%;
+}
+#ProductVIEW{
+	Position:absolute;
+	left:0%;
+	top:26%;
+}
+.Userdump{
+	float:left;
+}
+
+a {text-decoration:none; color:#252525}
+a:hover {
+	color:#29c5e6;
+	text-decoration:underline;}
+	
+input[type="text"] {
+	background-color: #f3f3f3;
+	border: 1px solid #e7e7e7;
+	height: 30px;
+	color: #5C5151;
+	padding: 0 10px;
+	vertical-align: top;
+}
+input[type="password"]{
+	background-color: #f3f3f3;
+	border: 1px solid #e7e7e7;
+	height: 30px;
+	color: #5C5151;
+	padding: 0 10px;
+	vertical-align: top;
+}
+.Remove{
+	background: #d9dabb; 
+    width: 150px; 
+    margin: 0 10px 10px 0;
+    padding: 10px 0; 
+    text-align: center; 
+    display: inline-block; 
+}
+.Remove img{
+	border: 2px solid #8b8e4b; 
+}
+.Remove p {
+	margin:0;
+}
