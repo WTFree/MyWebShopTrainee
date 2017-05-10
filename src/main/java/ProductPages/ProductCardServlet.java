@@ -57,7 +57,5 @@ public class ProductCardServlet extends HttpServlet {
 		out.close();
 		
 	}
-
 	
-
 }

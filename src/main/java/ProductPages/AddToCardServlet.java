@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Product.DAO.JDBCProductDAO;
+import models.user.User;
 
 @WebServlet()
 public class AddToCardServlet extends HttpServlet {
@@ -24,7 +25,10 @@ public class AddToCardServlet extends HttpServlet {
 	
 		String userID = request.getParameter("userID");
 		String productID = request.getParameter("productID");
-
+		User user = (User) request.getSession().getAttribute("user");
+		if(Integer.parseInt(userID) != user.getId()){
+			response.sendRedirect("ErrorPage.jsp");;
+		}else{
 		request.getRequestDispatcher("/WEB-INF/includes/header.jsp").include(request, response);
 		PrintWriter out = response.getWriter();
 		out.print("<button onclick=\"history.back()\" value=\"back\"> >>>Back<<< </button>");
@@ -34,7 +38,7 @@ public class AddToCardServlet extends HttpServlet {
 		JDBCProductDAO dao = new JDBCProductDAO();
 		dao.AddToBasket(Integer.parseInt(userID), Integer.parseInt(productID));
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-		
+		}
 	}
 
 }
