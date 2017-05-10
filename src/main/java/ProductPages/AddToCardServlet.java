@@ -30,7 +30,7 @@ public class AddToCardServlet extends HttpServlet {
 			response.sendRedirect("ErrorPage.jsp");;
 		}else{
 			
-			String firstRedirectUrl = request.getContextPath()+"ProductID?id="+productID;
+			String firstRedirectUrl = request.getContextPath()+"/ProductID?id="+productID;
 			response.sendRedirect(firstRedirectUrl);
 
 			JDBCProductDAO dao = new JDBCProductDAO();
