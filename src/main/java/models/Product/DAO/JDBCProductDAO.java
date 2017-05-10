@@ -17,8 +17,6 @@ public class JDBCProductDAO implements IProductDAO{
 	
 
 	private static final String url ="jdbc:mysql://localhost:3306/onlinewebshop?useSSL=false";
-    private static final String GET_PRODUCT_TYPE = "SELECT * FROM PRODUCTS WHERE type =?";
-    private static final String GET_PRODUCT_PRICE_TYPE = "SELECT * FROM PRODUCTS WHERE price = ? AND type =?";
     private static final String GET_PRODUCT = "SELECT * FROM PRODUCTS WHERE name = ? AND price = ? AND type =? AND img = ?";
     private static final String GET_ALL_PRODUCTS = "SELECT * FROM PRODUCTS";
     private static final String CREATE_PRODUCT = "INSERT INTO PRODUCTS (name, price,type,img) values (? , ?, ?, ?)";
@@ -26,7 +24,6 @@ public class JDBCProductDAO implements IProductDAO{
     private static final String UPDATE = "UPDATE PRODUCTS SET name = ?, price = ?, type = ?, img = ? WHERE id = ?";
     private static final String SELECT_PRODUCT = "SELECT * FROM PRODUCTS WHERE id = ?";
     private static final String ADD_TO_BASKET = "INSERT INTO BASKET(id_user,id_product) values (?, ?)";
-    private static final String GET_FROM_BASKET = " SELECT * FROM basket INNER JOIN products ON products.id = basket.id_product WHERE basket.id_user = ?";
     private static final String REMOVE_FROM_BASKET ="DELETE FROM BASKET WHERE id_user = ? and id =?";
     
     @Override
@@ -62,78 +59,6 @@ public class JDBCProductDAO implements IProductDAO{
         }
 	}
 
-	@Override
-	public ArrayList<Product> getProductsByType(String type) throws Exception {
-		Connection conn = null;
-		ArrayList<Product> AllProducts = new ArrayList<>();
-		try{
-			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
-			DriverManager.registerDriver(driver);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		
-		try{
-			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-			Statement statement = (Statement) conn.createStatement();
-			ResultSet result = statement.executeQuery(GET_PRODUCT_TYPE);
-			while(result.next()){
-				Product product = new Product(result.getInt("id"),
-						result.getString("name"),
-						result.getString("price"),
-						result.getString("type"),
-						result.getString("img"));
-				AllProducts.add(product);
-			}
-		
-			return AllProducts;
-		}
-		catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ignored) {}
-            }
-        }		
-	}
-
-	@Override
-	public ArrayList<Product> getProductsByPrice(String price, String type) throws Exception {
-		Connection conn = null;
-		ArrayList<Product> AllProducts = new ArrayList<>();
-		try{
-			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
-			DriverManager.registerDriver(driver);
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
-		
-		try{
-			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-			Statement statement = (Statement) conn.createStatement();
-			ResultSet result = statement.executeQuery(GET_ALL_PRODUCTS);
-			while(result.next()){
-				Product product = new Product(result.getInt("id"),
-						result.getString("name"),
-						result.getString("password"),
-						result.getString("type"),
-						result.getString("img"));
-				AllProducts.add(product);
-			}
-		
-			return AllProducts;
-		}
-		catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ignored) {}
-            }
-        }		
-		
-	}
 
 	@Override
 	public Product getProduct(String name, String price, String type, String img) throws Exception {
@@ -323,7 +248,6 @@ public class JDBCProductDAO implements IProductDAO{
 	@Override
 	public ArrayList<Product> getFromBasket(int id) {
 		Connection conn = null;
-		PreparedStatement pStat = null;
 		
 		ArrayList<Product> AllProducts = new ArrayList<>();
 		try{
