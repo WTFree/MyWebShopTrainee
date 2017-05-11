@@ -9,93 +9,79 @@
   
   <servlet>
   	<servlet-name>RegistrationServlet</servlet-name>
-  	<servlet-class>Pages.RegistrationServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.Pages.RegistrationServlet</servlet-class>
   </servlet>
   
   <servlet>
   	<servlet-name>LoginServlet</servlet-name>
-  	<servlet-class>Pages.LoginServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.Pages.LoginServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>Logout</servlet-name>
-  	<servlet-class>Pages.LogoutServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.Pages.LogoutServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductRegisterServlet</display-name>
   	<servlet-name>ProductRegisterServlet</servlet-name>
-  	<servlet-class>ProductPages.ProductRegisterServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductRegisterServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
-  	<display-name>SeatchServlet</display-name>
-  	<servlet-name>SeatchServlet</servlet-name>
-  	<servlet-class>ProductPages.SeatchServlet</servlet-class>
+  	<display-name>SearchServlet</display-name>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<servlet-class>ua.shop.vitaly.ProductPages.SearchServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductUpdateServlet</display-name>
   	<servlet-name>ProductUpdateServlet</servlet-name>
-  	<servlet-class>ProductPages.ProductUpdateServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductUpdateServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductDeleteServlet</display-name>
   	<servlet-name>ProductDeleteServlet</servlet-name>
-  	<servlet-class>ProductPages.ProductDeleteServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductDeleteServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductVIEW</display-name>
   	<servlet-name>ProductVIEW</servlet-name>
-  	<servlet-class>ProductPages.ProductVIEW</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductVIEW</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductCard</display-name>
   	<servlet-name>ProductCard</servlet-name>
-  	<servlet-class>ProductPages.ProductCardServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductCardServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductIDServlet</display-name>
   	<servlet-name>ProductIDServlet</servlet-name>
-  	<servlet-class>ProductPages.ProductIDServlet</servlet-class>
-  </servlet>
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>UserOrders</display-name>
-  	<servlet-name>UserOrders</servlet-name>
-  	<servlet-class>UserOrders.UserOrders</servlet-class>
-  </servlet>
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>UserOrdersDelete</display-name>
-  	<servlet-name>UserOrdersDelete</servlet-name>
-  	<servlet-class>UserOrders.UserOrdersDelete</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductIDServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>AddToCardServlet</display-name>
   	<servlet-name>AddToCardServlet</servlet-name>
-  	<servlet-class>ProductPages.AddToCardServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.AddToCardServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>RemoveFromCardServlet</display-name>
   	<servlet-name>RemoveFromCardServlet</servlet-name>
-  	<servlet-class>ProductPages.RemoveFromCardServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.RemoveFromCardServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -106,7 +92,6 @@
   	<servlet-name>RegistrationServlet</servlet-name>
   	<url-pattern>/registration</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -124,8 +109,8 @@
   	<url-pattern>/ProductRegister</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>SeatchServlet</servlet-name>
-  	<url-pattern>/SeatchServlet</url-pattern>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<url-pattern>/SearchServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ProductUpdateServlet</servlet-name>
@@ -135,7 +120,6 @@
   	<servlet-name>ProductDeleteServlet</servlet-name>
   	<url-pattern>/ProductDelete</url-pattern>
   </servlet-mapping>
-  
    <servlet-mapping>
   	<servlet-name>ProductVIEW</servlet-name>
   	<url-pattern>/PRODUCTVIEW</url-pattern>
@@ -185,14 +169,6 @@
   	<url-pattern>/Productid</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>UserOrders</servlet-name>
-  	<url-pattern>/UserOrders</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>UserOrdersDelete</servlet-name>
-  	<url-pattern>/UserOrdersDelete</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>AddToCardServlet</servlet-name>
   	<url-pattern>/AddToCardServlet</url-pattern>
   </servlet-mapping>
@@ -203,14 +179,14 @@
   
   <filter>
   	<filter-name>Controller</filter-name>
-  	<filter-class>controllers.ControllerUser</filter-class>
+  	<filter-class>ua.shop.vitaly.controllers.ControllerUser</filter-class>
   </filter>
   <filter>
   	<description>
   	</description>
   	<display-name>AdminFilter</display-name>
   	<filter-name>AdminFilter</filter-name>
-  	<filter-class>controllers.AdminFilter</filter-class>
+  	<filter-class>ua.shop.vitaly.controllers.AdminFilter</filter-class>
   </filter>
   
  	<filter-mapping>

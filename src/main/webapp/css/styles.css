@@ -340,10 +340,16 @@ input[type="password"]{
 	float:left; 
 	width:250px;
 	border-radius:30px;
+	
 }
+
+.ProductByID img{
+	transition-timing-function: ease;
+	transition: 2s;
+}
+
 .ProductByID img:hover{
 	height:330px;
-	transition: 0.6s;
 }
 
 .shop-image:hover{
