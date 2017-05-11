@@ -309,4 +309,41 @@ public class JDBCProductDAO implements IProductDAO{
         }
 	}
 
+
+	@Override
+	public ArrayList<Product> getAllProductsByName(String name) throws Exception {
+		Connection conn = null;
+		ArrayList<Product> AllProductsByName = new ArrayList<>();
+		try{
+			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
+			DriverManager.registerDriver(driver);
+		}
+		catch(Exception e){System.out.println(e.getMessage());}
+		
+		try{
+			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
+			Statement statement = (Statement) conn.createStatement();
+			ResultSet result = statement.executeQuery("SELECT * FROM PRODUCTS WHERE NAME =\""+name+"\"");
+			while(result.next()){
+				Product product = new Product(result.getInt("id"),
+						result.getString("name"),
+						result.getString("price"),
+						result.getString("type"),
+						result.getString("img"));
+				AllProductsByName.add(product);
+			}
+		
+			return AllProductsByName;
+		}
+		catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ignored) {}
+            }
+        }
+	}
+
 }

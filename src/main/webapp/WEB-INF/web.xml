@@ -110,7 +110,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>SearchServlet</servlet-name>
-  	<url-pattern>/SearchServlet</url-pattern>
+  	<url-pattern>/Search</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ProductUpdateServlet</servlet-name>
