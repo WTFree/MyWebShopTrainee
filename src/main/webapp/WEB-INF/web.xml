@@ -192,11 +192,31 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>AboutMeServlet</servlet-name>
-  	<url-pattern>/AboutMeServlet</url-pattern>
+  	<url-pattern>/aboutme</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AboutMeServlet</servlet-name>
+  	<url-pattern>/AboutMe</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AboutMeServlet</servlet-name>
+  	<url-pattern>/Aboutme</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AboutMeServlet</servlet-name>
+  	<url-pattern>/ABOUTME</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ContactServlet</servlet-name>
-  	<url-pattern>/ContactServlet</url-pattern>
+  	<url-pattern>/Contact</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ContactServlet</servlet-name>
+  	<url-pattern>/CONTACT</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ContactServlet</servlet-name>
+  	<url-pattern>/contact</url-pattern>
   </servlet-mapping>
   
   <filter>

@@ -20,7 +20,11 @@ import ua.shop.vitaly.models.user.User;
 
 public class ControllerUser implements Filter{
 	
-	private List<String> pathFilters = Arrays.asList(new String[]{"ProductCard","PRODUCTCARD","productcard","Productcard","AddToCardServlet","RemoveFromCardServlet"});
+	private List<String> pathFilters = Arrays.asList(new String[]{
+				"ProductCard","PRODUCTCARD","productcard","Productcard","AddToCardServlet",
+				"RemoveFromCardServlet"
+				}
+			);
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChaine)
