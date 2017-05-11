@@ -1,4 +1,4 @@
-package ua.shop.vitaly.ProductPages;
+package ua.shop.vitaly.ProductPages.UserProductPages;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,16 +31,15 @@ public class SearchServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String firstRedirectUrl = request.getContextPath()+"/Search?name="+name;
-		if(itemListByName!=null){
+		if(itemListByName.size()>0){
 			request.getRequestDispatcher("/WEB-INF/includes/header.jsp").include(request, response);
 			PrintWriter out = response.getWriter();
 			out.println("<center><h1>Result of your search :)</h1></center>");
-			out.print("<div style=\"text-align:center\">");
+			out.print("<div style=\"text-align:center\" id=\"content\">");
 			for(Product x : itemListByName){
 				out.print("<div class=\"contentForUsers\">");
 						out.print("<div>");
-				  			out.print("<a href=\""+request.getContextPath()+"+ProductID?id="+x.getId()+"\">");
+				  			out.print("<a href=\""+request.getContextPath()+"/ProductID?id="+x.getId()+"\">");
 				  				out.print("<img alt =\"SOME ITEMS\" class=\"top-image\" src =\""+path+"/"+x.getImg()+"\" style=\"border-radius: 25px 25px 0 0;\" width=\"150\" height=\"140\">");
 				  			out.print("</a>");
 			  			out.print("</div>");

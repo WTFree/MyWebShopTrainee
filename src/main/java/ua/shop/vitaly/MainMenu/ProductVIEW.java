@@ -1,4 +1,4 @@
-package ua.shop.vitaly.ProductPages;
+package ua.shop.vitaly.MainMenu;
 
 import java.io.IOException;
 import java.util.ArrayList;

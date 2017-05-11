@@ -9,79 +9,93 @@
   
   <servlet>
   	<servlet-name>RegistrationServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.Pages.RegistrationServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.GeneralUsersPage.RegistrationServlet</servlet-class>
   </servlet>
   
   <servlet>
   	<servlet-name>LoginServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.Pages.LoginServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.GeneralUsersPage.LoginServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>Logout</servlet-name>
-  	<servlet-class>ua.shop.vitaly.Pages.LogoutServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.GeneralUsersPage.LogoutServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductRegisterServlet</display-name>
   	<servlet-name>ProductRegisterServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.ProductRegisterServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.AdminProductPages.ProductRegisterServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>SearchServlet</display-name>
   	<servlet-name>SearchServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.SearchServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.UserProductPages.SearchServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductUpdateServlet</display-name>
   	<servlet-name>ProductUpdateServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.ProductUpdateServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.AdminProductPages.ProductUpdateServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductDeleteServlet</display-name>
   	<servlet-name>ProductDeleteServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.ProductDeleteServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.AdminProductPages.ProductDeleteServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductVIEW</display-name>
   	<servlet-name>ProductVIEW</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.ProductVIEW</servlet-class>
+  	<servlet-class>ua.shop.vitaly.MainMenu.ProductVIEW</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductCard</display-name>
   	<servlet-name>ProductCard</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.ProductCardServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductCardPages.ProductCardServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ProductIDServlet</display-name>
   	<servlet-name>ProductIDServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.ProductIDServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.UserProductPages.ProductIDServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>AddToCardServlet</display-name>
   	<servlet-name>AddToCardServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.AddToCardServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductCardPages.AddToCardServlet</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>RemoveFromCardServlet</display-name>
   	<servlet-name>RemoveFromCardServlet</servlet-name>
-  	<servlet-class>ua.shop.vitaly.ProductPages.RemoveFromCardServlet</servlet-class>
+  	<servlet-class>ua.shop.vitaly.ProductPages.ProductCardPages.RemoveFromCardServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AboutMeServlet</display-name>
+  	<servlet-name>AboutMeServlet</servlet-name>
+  	<servlet-class>ua.shop.vitaly.MainMenu.AboutMeServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ContactServlet</display-name>
+  	<servlet-name>ContactServlet</servlet-name>
+  	<servlet-class>ua.shop.vitaly.MainMenu.ContactServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -175,6 +189,14 @@
   <servlet-mapping>
   	<servlet-name>RemoveFromCardServlet</servlet-name>
   	<url-pattern>/RemoveFromCardServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AboutMeServlet</servlet-name>
+  	<url-pattern>/AboutMeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ContactServlet</servlet-name>
+  	<url-pattern>/ContactServlet</url-pattern>
   </servlet-mapping>
   
   <filter>

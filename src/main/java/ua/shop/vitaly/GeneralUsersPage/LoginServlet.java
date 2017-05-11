@@ -1,4 +1,4 @@
-package ua.shop.vitaly.Pages;
+package ua.shop.vitaly.GeneralUsersPage;
 
 import java.io.IOException;
 import java.io.PrintWriter;

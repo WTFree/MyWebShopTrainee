@@ -1,4 +1,4 @@
-package ua.shop.vitaly.ProductPages;
+package ua.shop.vitaly.ProductPages.ProductCardPages;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +38,7 @@ public class ProductCardServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/includes/header.jsp").include(request, response);
 		PrintWriter out = response.getWriter();
 		out.print("<h1>It's your basket "+user.getLogin()+"</h1>");
-		out.print("<div style=\"text-align:center\">");
+		out.print("<div style=\"text-align:center\" id=\"content\">");
 		for(Product x : basketList){
 			out.print("<div class=\"Remove\">"
 					+"<p><img alt =\"SOME ITEMS\" class=\"top-image\" src =\"http://localhost:8080/ua.shop.vitaly/"+x.getImg()+"\" width=\"160\" height=\"150\"</p>"
@@ -47,7 +47,7 @@ public class ProductCardServlet extends HttpServlet {
 					+"<form action=\"RemoveFromCardServlet\" method=\"post\">"+
 			  			"<input type=\"hidden\" name=\"userID\" value=\""+ id +"\">"+
 			  			"<input type=\"hidden\" name=\"prodID\" value=\""+x.getId()+"\">"+
-			  			"<div style=\"margin-top:10px;\"><button style=\"width:100%\">>>Remove<<</button></div>"+
+			  			"<div style=\"margin-top:10px;\"><button style=\"width:70%\">>>Remove<<</button></div>"+
 			  		"</form>"+ 
 			  		"</div>");
 		}

@@ -1,4 +1,4 @@
-package ua.shop.vitaly.ProductPages;
+package ua.shop.vitaly.ProductPages.AdminProductPages;
 
 import java.io.IOException;
 import java.io.PrintWriter;

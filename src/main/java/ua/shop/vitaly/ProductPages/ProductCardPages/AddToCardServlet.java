@@ -1,4 +1,4 @@
-package ua.shop.vitaly.ProductPages;
+package ua.shop.vitaly.ProductPages.ProductCardPages;
 
 import java.io.IOException;
 
@@ -12,32 +12,30 @@ import ua.shop.vitaly.models.Product.DAO.JDBCProductDAO;
 import ua.shop.vitaly.models.user.User;
 
 @WebServlet()
-public class RemoveFromCardServlet extends HttpServlet {
+public class AddToCardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public RemoveFromCardServlet() {
+    public AddToCardServlet() {
         super();
     }
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String userID = request.getParameter("userID");
-		String prodID = request.getParameter("prodID");
-		
-		String firstRedirectUrl = request.getContextPath()+"/productcard";
-		
-		
+		String productID = request.getParameter("productID");
 		User user = (User) request.getSession().getAttribute("user");
 		if(Integer.parseInt(userID) != user.getId()){
 			response.sendRedirect("ErrorPage.jsp");;
 		}else{
+			
+			String firstRedirectUrl = request.getContextPath()+"/ProductID?id="+productID;
 			response.sendRedirect(firstRedirectUrl);
+
 			JDBCProductDAO dao = new JDBCProductDAO();
-			dao.RemoveFromBasket(Integer.parseInt(userID), Integer.parseInt(prodID));
+			dao.AddToBasket(Integer.parseInt(userID), Integer.parseInt(productID));
+			
 		}
-		
 	}
 
 }
