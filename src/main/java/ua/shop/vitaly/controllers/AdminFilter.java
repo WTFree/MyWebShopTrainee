@@ -20,7 +20,9 @@ import ua.shop.vitaly.models.user.User;
 
 public class AdminFilter implements Filter {
 
-	private List<String> pathFilters = Arrays.asList(new String[]{"AdminMenu.jsp","index.jsp"});
+	private List<String> pathFilters = Arrays.asList(new String[]{
+			"AdminMenu.jsp","index.jsp","ProductRegisterServlet","ProductDeleteServlet","ProductUpdateServlet"
+	});
 	
     public AdminFilter() {
     }
