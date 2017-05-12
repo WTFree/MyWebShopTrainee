@@ -88,8 +88,8 @@
 			<div style="float:right; padding: 25px 0;">
 				<%@include file="/WEB-INF/includes/SignUP_SignIN.jsp" %>
 				<div style="float:left">		
-					<form action="#" method="get">
-						<input type="text" name="q" placeholder ="Search">
+					<form action="Search" method="get">
+						<input type="text" name="name" placeholder ="Search">
 						<button type="submit">Go</button>
 					</form>
 				</div>

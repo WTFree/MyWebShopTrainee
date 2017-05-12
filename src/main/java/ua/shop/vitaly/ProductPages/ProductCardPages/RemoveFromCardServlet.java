@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ua.shop.vitaly.models.Product.Product;
 import ua.shop.vitaly.models.Product.DAO.JDBCProductDAO;
 import ua.shop.vitaly.models.user.User;
 
@@ -23,20 +24,31 @@ public class RemoveFromCardServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String userID = request.getParameter("userID");
 		String prodID = request.getParameter("prodID");
 		
 		String firstRedirectUrl = request.getContextPath()+"/productcard";
 		
 		
 		User user = (User) request.getSession().getAttribute("user");
-		if(Integer.parseInt(userID) != user.getId()){
-			response.sendRedirect("ErrorPage.jsp");;
-		}else{
-			response.sendRedirect(firstRedirectUrl);
-			JDBCProductDAO dao = new JDBCProductDAO();
-			dao.RemoveFromBasket(Integer.parseInt(userID), Integer.parseInt(prodID));
+		response.sendRedirect(firstRedirectUrl);
+		JDBCProductDAO dao = new JDBCProductDAO();
+		
+		boolean prodUP = false;
+		try {
+			for(Product x : dao.getAllProducts()){
+				
+				if (x.getId()==Integer.parseInt(prodID)){
+					prodUP = true;
+					break;
+				}
+				
+			}
+		} catch (Exception e) {
+			response.sendRedirect("ErrorPage.jsp");
 		}
+		if(prodUP=true){
+			dao.RemoveFromBasket(user.getId(), Integer.parseInt(prodID));
+		}else{response.sendRedirect("ErrorPage.jsp");}
 		
 	}
 

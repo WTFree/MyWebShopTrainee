@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import ua.shop.vitaly.models.Product.Product;
 import ua.shop.vitaly.models.Product.DAO.JDBCProductDAO;
-import ua.shop.vitaly.models.user.User;
 
 @WebServlet
 public class ProductIDServlet extends HttpServlet {
@@ -28,8 +27,6 @@ public class ProductIDServlet extends HttpServlet {
 		String url = request.getParameter("id").toString();
 		
 		JDBCProductDAO dao = new JDBCProductDAO();
-		User user = null ;
-		user = (User)request.getSession().getAttribute("user");
 		Product product = null;
 		try {
 			product = dao.getProduct(Integer.parseInt(id));
@@ -48,7 +45,6 @@ public class ProductIDServlet extends HttpServlet {
 					+ "<img style=\"border: 1px solid #d7dadd; border-radius: 20px;\" alt =\"SOME ITEMS\" src =\"http://localhost:8080/ua.shop.vitaly/"+ product.getImg() +"\" width=\"250\" height=\"230\">"
 					+ "<div style=\"margin-top:10px;\">"
 					+"<form action=\"AddToCardServlet\" method=\"post\">"
-					+ "<input type=\"hidden\" name =\"userID\" value=\""+user.getId()+"\">"
 					+ "<input type=\"hidden\" name =\"productID\"value=\""+url+"\">"
 					+ "<button id=\"ButtonBUY\" type=\"submit\" value=\"click here\">Buy me pls</button>"
 					+"</form>"
