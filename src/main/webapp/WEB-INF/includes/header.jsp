@@ -101,7 +101,7 @@
 			
 			<div style="clear: both;">	
 				<nav>
-					<div id="selectBackground" style="background-color: #f8f8f8;">
+					<div id="selectBackground" style="background-color: #fff;">
 					<ul class="top-menu">
 						<li><a href="${pageContext.request.contextPath}/ProductVIEW" class="active" id="HOME">HOME</a></li>
 						<li><a href="" id="AboutMe">ABOUT ME</a></li>
