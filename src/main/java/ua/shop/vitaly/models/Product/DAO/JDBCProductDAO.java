@@ -29,6 +29,8 @@ public class JDBCProductDAO implements IProductDAO{
     @Override
 	public Product getProduct(int id) throws Exception {
     	Connection conn = null;
+    	PreparedStatement pStat = null;
+    	ResultSet resultSet = null;
 		try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
@@ -37,20 +39,31 @@ public class JDBCProductDAO implements IProductDAO{
 		
 		try{
 			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-			PreparedStatement statement = (PreparedStatement) conn.prepareStatement(SELECT_PRODUCT);
-            statement.setInt(1, id);
-			ResultSet result = statement.executeQuery();
+			pStat = (PreparedStatement) conn.prepareStatement(SELECT_PRODUCT);
+            pStat.setInt(1, id);
+			resultSet = pStat.executeQuery();
 			
-			boolean hasProduct = result.next();
+			boolean hasProduct = resultSet.next();
 			if(!hasProduct) throw new NoSuchProductException("Product not found!");
-			return new Product(result.getInt("id"),
-					result.getString("name"),
-					result.getString("price"),
-					result.getString("type"),
-					result.getString("img"));
+			return new Product(resultSet.getInt("id"),
+					resultSet.getString("name"),
+					resultSet.getString("price"),
+					resultSet.getString("type"),
+					resultSet.getString("img"));
+		
 		}catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	if(resultSet!=null){
+				try{
+					resultSet.close();
+				}catch(SQLException ignored){}
+			}
+        	if(pStat!=null){
+				try{
+					pStat.close();
+				}catch(SQLException ignored){}
+			}
             if (conn != null) {
                 try {
                     conn.close();
@@ -64,6 +77,7 @@ public class JDBCProductDAO implements IProductDAO{
 	public Product getProduct(String name, String price, String type, String img) throws Exception {
 		Connection conn = null;
 		PreparedStatement pStat = null;
+		ResultSet resultSet = null;
 		try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
@@ -77,7 +91,7 @@ public class JDBCProductDAO implements IProductDAO{
 	        pStat.setString(2, price);
 	        pStat.setString(3, type);
 	        pStat.setString(4, img);
-	        ResultSet resultSet = pStat.executeQuery();
+	        resultSet = pStat.executeQuery();
 			
 			boolean hasProduct = resultSet.next();
 			if(!hasProduct) throw new NoSuchProductException("Product not found!");
@@ -89,6 +103,16 @@ public class JDBCProductDAO implements IProductDAO{
 		}catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	if(resultSet!=null){
+				try{
+					resultSet.close();
+				}catch(SQLException ignored){}
+			}
+        	if(pStat !=null){
+        		try{
+        			pStat.close();
+        		}catch(SQLException igonored){}
+        	}
             if (conn != null) {
                 try {
                     conn.close();
@@ -100,6 +124,8 @@ public class JDBCProductDAO implements IProductDAO{
 	@Override
 	public ArrayList<Product> getAllProducts() throws Exception {
 		Connection conn = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
 		ArrayList<Product> AllProducts = new ArrayList<>();
 		try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -109,22 +135,32 @@ public class JDBCProductDAO implements IProductDAO{
 		
 		try{
 			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-			Statement statement = (Statement) conn.createStatement();
-			ResultSet result = statement.executeQuery(GET_ALL_PRODUCTS);
-			while(result.next()){
-				Product product = new Product(result.getInt("id"),
-						result.getString("name"),
-						result.getString("price"),
-						result.getString("type"),
-						result.getString("img"));
+			statement = (Statement) conn.createStatement();
+			resultSet = statement.executeQuery(GET_ALL_PRODUCTS);
+			while(resultSet.next()){
+				Product product = new Product(resultSet.getInt("id"),
+						resultSet.getString("name"),
+						resultSet.getString("price"),
+						resultSet.getString("type"),
+						resultSet.getString("img"));
 				AllProducts.add(product);
 			}
-		
+			
 			return AllProducts;
 		}
 		catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	if(resultSet!=null){
+				try{
+					resultSet.close();
+				}catch(SQLException ignored){}
+			}
+        	if(statement!=null){
+				try{
+					statement.close();
+				}catch(SQLException ignored){}
+			}
             if (conn != null) {
                 try {
                     conn.close();
@@ -141,6 +177,7 @@ public class JDBCProductDAO implements IProductDAO{
 	            throw new IllegalArgumentException("Contact doesn't have id");
 		 
 		 Connection conn = null;
+		 PreparedStatement pStat = null;
 	        try{
 				Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 				DriverManager.registerDriver(driver);
@@ -148,14 +185,19 @@ public class JDBCProductDAO implements IProductDAO{
 			catch(Exception e){System.out.println(e.getMessage());}
 	        try {
 				conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-	            PreparedStatement statement = conn.prepareStatement(UPDATE);
-	            statement.setString(1, NEWproduct.getName());
-	            statement.setString(2, NEWproduct.getPrice());
-	            statement.setString(3, NEWproduct.getType());
-	            statement.setString(4, NEWproduct.getImg());
-	            statement.setInt(5, OLDproduct.getId());
-	            return statement.executeUpdate();
+	            pStat = conn.prepareStatement(UPDATE);
+	            pStat.setString(1, NEWproduct.getName());
+	            pStat.setString(2, NEWproduct.getPrice());
+	            pStat.setString(3, NEWproduct.getType());
+	            pStat.setString(4, NEWproduct.getImg());
+	            pStat.setInt(5, OLDproduct.getId());
+	            return pStat.executeUpdate();
 	        } finally {
+	        	if(pStat !=null){
+	        		try{
+	        			pStat.close();
+	        		}catch(SQLException igonored){}
+	        	}
 	            if (conn != null) {
 	                try {
 	                    conn.close();
@@ -171,6 +213,7 @@ public class JDBCProductDAO implements IProductDAO{
             throw new IllegalArgumentException("Product doesn't have id or id is invalid");
 
         Connection conn = null;
+        PreparedStatement pStat = null;
         try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
@@ -178,11 +221,16 @@ public class JDBCProductDAO implements IProductDAO{
 		catch(Exception e){System.out.println(e.getMessage());}
         try {
 			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-            PreparedStatement statement = conn.prepareStatement(DELETE);
-            statement.setInt(1, product.getId());
+            pStat = conn.prepareStatement(DELETE);
+            pStat.setInt(1, product.getId());
 
-            return statement.executeUpdate() > 0;
+            return pStat.executeUpdate() > 0;
         } finally {
+        	if(pStat !=null){
+        		try{
+        			pStat.close();
+        		}catch(SQLException igonored){}
+        	}
             if (conn != null) {
                 try {
                     conn.close();
@@ -211,6 +259,11 @@ public class JDBCProductDAO implements IProductDAO{
 		catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
+        	if(pStat !=null){
+        		try{
+        			pStat.close();
+        		}catch(SQLException igonored){}
+        	}
             if (conn != null) {
                 try {
                     conn.close();
@@ -237,6 +290,11 @@ public class JDBCProductDAO implements IProductDAO{
 		catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
+        	if(pStat !=null){
+        		try{
+        			pStat.close();
+        		}catch(SQLException igonored){}
+        	}
             if (conn != null) {
                 try {
                     conn.close();
@@ -248,6 +306,8 @@ public class JDBCProductDAO implements IProductDAO{
 	@Override
 	public ArrayList<Product> getFromBasket(int id) {
 		Connection conn = null;
+		Statement statement = null;
+		ResultSet result = null;
 		
 		ArrayList<Product> AllProducts = new ArrayList<>();
 		try{
@@ -258,8 +318,8 @@ public class JDBCProductDAO implements IProductDAO{
 		
 		try{
 			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-			Statement statement = (Statement) conn.createStatement();
-			ResultSet result = statement.executeQuery("SELECT * FROM basket INNER JOIN products ON products.id = basket.id_product WHERE basket.id_user ="+id);
+			statement = (Statement) conn.createStatement();
+			result = statement.executeQuery("SELECT * FROM basket INNER JOIN products ON products.id = basket.id_product WHERE basket.id_user ="+id);
 			while(result.next()){
 				Product product = new Product(result.getInt("id"),
 						result.getString("name"),
@@ -274,7 +334,17 @@ public class JDBCProductDAO implements IProductDAO{
 		catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            if (conn != null) {
+        	if (result != null) {
+                try {
+                	result.close();
+                } catch (SQLException ignored) {}
+            }
+        	if (statement != null) {
+                try {
+                	statement.close();
+                } catch (SQLException ignored) {}
+            }
+        	if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ignored) {}
@@ -285,6 +355,7 @@ public class JDBCProductDAO implements IProductDAO{
 	@Override
 	public boolean RemoveFromBasket(int userID, int productID) {
 		Connection conn = null;
+		PreparedStatement pStat = null;
         try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
@@ -292,15 +363,20 @@ public class JDBCProductDAO implements IProductDAO{
 		catch(Exception e){System.out.println(e.getMessage());}
         try {
 			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-            PreparedStatement statement = conn.prepareStatement(REMOVE_FROM_BASKET);
-            statement.setInt(1, userID);
-            statement.setInt(2, productID);
+            pStat = conn.prepareStatement(REMOVE_FROM_BASKET);
+            pStat.setInt(1, userID);
+            pStat.setInt(2, productID);
 
-            return statement.executeUpdate() > 0;
+            return pStat.executeUpdate() > 0;
         } catch(Exception e){
         	e.getStackTrace();
         	return false;}
         finally {
+        	if(pStat !=null){
+        		try{
+        			pStat.close();
+        		}catch(SQLException igonored){}
+        	}
             if (conn != null) {
                 try {
                     conn.close();
@@ -313,6 +389,8 @@ public class JDBCProductDAO implements IProductDAO{
 	@Override
 	public ArrayList<Product> getAllProductsByName(String name) throws Exception {
 		Connection conn = null;
+		Statement statement = null;
+		ResultSet result = null;
 		ArrayList<Product> AllProductsByName = new ArrayList<>();
 		try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -322,8 +400,8 @@ public class JDBCProductDAO implements IProductDAO{
 		
 		try{
 			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-			Statement statement = (Statement) conn.createStatement();
-			ResultSet result = statement.executeQuery("SELECT * FROM PRODUCTS WHERE NAME =\""+name+"\"");
+			statement = (Statement) conn.createStatement();
+			result = statement.executeQuery("SELECT * FROM PRODUCTS WHERE NAME =\""+name+"\"");
 			while(result.next()){
 				Product product = new Product(result.getInt("id"),
 						result.getString("name"),
@@ -338,6 +416,16 @@ public class JDBCProductDAO implements IProductDAO{
 		catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	if (result != null) {
+                try {
+                	result.close();
+                } catch (SQLException ignored) {}
+            }
+        	if (statement != null) {
+                try {
+                	statement.close();
+                } catch (SQLException ignored) {}
+            }
             if (conn != null) {
                 try {
                     conn.close();

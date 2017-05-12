@@ -36,6 +36,7 @@ public class JDBCUserDAO implements IUserDAO{
 		
 		Connection conn = null;
 		PreparedStatement pStat = null;
+		ResultSet resultSet = null;
 		try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
 			DriverManager.registerDriver(driver);
@@ -47,14 +48,26 @@ public class JDBCUserDAO implements IUserDAO{
 			pStat = conn.prepareStatement(GET_USER);
 	        pStat.setString(1, login);
 	        pStat.setString(2, password);
-	        ResultSet resultSet = pStat.executeQuery();
+	        resultSet = pStat.executeQuery();
 			
 			boolean hasUser = resultSet.next();
 			if(!hasUser) throw new NoSuchUserException("User not found!");
-			return new User(resultSet.getInt("id"),resultSet.getString("login"),resultSet.getString("password"));
+			return  new User(resultSet.getInt("id"),
+					resultSet.getString("login"),
+					resultSet.getString("password"));
 		}catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	if(resultSet!=null){
+				try{
+					resultSet.close();
+				}catch(SQLException ignored){}
+			} 
+        	if(pStat !=null){
+        		try{
+        			pStat.close();
+        		}catch(SQLException igonored){}
+        	}
             if (conn != null) {
                 try {
                     conn.close();
@@ -82,6 +95,11 @@ public class JDBCUserDAO implements IUserDAO{
 		catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
+        	if(pStat !=null){
+        		try{
+        			pStat.close();
+        		}catch(SQLException igonored){}
+        	}
             if (conn != null) {
                 try {
                     conn.close();
@@ -93,6 +111,8 @@ public class JDBCUserDAO implements IUserDAO{
 	@Override
 	public ArrayList<User> getAllUsers() throws Exception {
 		Connection conn = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
 		ArrayList<User> AllUsers = new ArrayList<>();
 		try{
 			Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -102,18 +122,27 @@ public class JDBCUserDAO implements IUserDAO{
 		
 		try{
 			conn = DriverManager.getConnection(url, "root", "FileFreK2324");
-			Statement statement = (Statement) conn.createStatement();
-			ResultSet result = statement.executeQuery(GET_ALL_USERS);
-			while(result.next()){
-				User user = new User(result.getInt("id"),result.getString("login"),result.getString("password"));
+			statement = (Statement) conn.createStatement();
+			resultSet = statement.executeQuery(GET_ALL_USERS);
+			while(resultSet.next()){
+				User user = new User(resultSet.getInt("id"),resultSet.getString("login"),resultSet.getString("password"));
 				AllUsers.add(user);
 			}
-		
 			return AllUsers;
 		}
 		catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	if(resultSet!=null){
+				try{
+					resultSet.close();
+				}catch(SQLException ignored){}
+			}
+        	if(statement!=null){
+				try{
+					statement.close();
+				}catch(SQLException ignored){}
+			}
             if (conn != null) {
                 try {
                     conn.close();
