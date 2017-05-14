@@ -1,13 +1,31 @@
 package ua.shop.vitaly.models.user;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /*
  *@author WitalyGaiduchok 
  * Created 25-February-2017
  * */
+@Entity
+@Table(name="user")
 public class User {
 	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue
     private int id;
+	
+	@Column(name="login")
     private String login;
+	
+	@Column(name="password")
     private String password;
+	
+	@Column(name="admin")
     private int admin =0;
 
 	public User() {

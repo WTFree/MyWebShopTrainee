@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="description" cont>
+	<meta name="description" content="text/html; charset=UTF-8">
 	<title> Admin Menu </title>
 	<link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>

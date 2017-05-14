@@ -1,9 +1,31 @@
 package ua.shop.vitaly.models.Product;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="products")
 public class Product {
 	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue
 	private int id;
-	private String name, price,type,img;
+	
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="price")
+	private String price;
+	
+	@Column(name="type")
+	private String type;
+	
+	@Column(name="img")
+	private String img;
 	
 	public Product(){
 		

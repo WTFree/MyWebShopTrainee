@@ -54,7 +54,7 @@ public class SearchServlet extends HttpServlet {
 		}else{
 			request.getRequestDispatcher("/WEB-INF/includes/header.jsp").include(request, response);
 			PrintWriter out = response.getWriter();
-			out.print("<center><h1>OOOOOoooops.... Anything have not found</h1></center>");
+			out.print("<div id=\"SearchServletID\"><center><h1>OOOOOoooops.... Anything have not found</h1></center></div>");
 			request.getRequestDispatcher("/WEB-INF/includes/footer.jsp").include(request, response);
 			out.close();
 		}

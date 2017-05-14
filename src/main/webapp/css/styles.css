@@ -392,3 +392,6 @@ input[type="password"]{
 	font-size: 10px;
 	text-align: right;
 }
+#SearchServletID{
+	min-height:376px;
+}

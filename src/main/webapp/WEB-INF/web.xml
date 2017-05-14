@@ -221,14 +221,14 @@
   
   <filter>
   	<filter-name>Controller</filter-name>
-  	<filter-class>ua.shop.vitaly.controllers.ControllerUser</filter-class>
+  	<filter-class>ua.shop.vitaly.filters.UserFilter</filter-class>
   </filter>
   <filter>
   	<description>
   	</description>
   	<display-name>AdminFilter</display-name>
   	<filter-name>AdminFilter</filter-name>
-  	<filter-class>ua.shop.vitaly.controllers.AdminFilter</filter-class>
+  	<filter-class>ua.shop.vitaly.filters.AdminFilter</filter-class>
   </filter>
   
  	<filter-mapping>
