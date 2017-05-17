@@ -13,3 +13,5 @@
               2)src\main\java\models\product\DAO\JDBCProductDAO
 	    
             3) 
+
+—силка на роботу проекту: https://www.youtube.com/watch?v=rdqAHOOQiLc ;
