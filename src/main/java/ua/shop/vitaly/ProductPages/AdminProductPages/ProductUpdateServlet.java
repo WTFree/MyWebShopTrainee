@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.shop.vitaly.models.Product.Product;
-import ua.shop.vitaly.models.Product.DAO.JDBCProductDAO;
+import ua.shop.vitaly.services.Product.ProductService;
 
 @WebServlet()
 public class ProductUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ProductService pService = new ProductService();    
+
     public ProductUpdateServlet() {
         super();
     }
@@ -28,8 +30,6 @@ public class ProductUpdateServlet extends HttpServlet {
 		String NEWprice = request.getParameter("NEWprice");
 		String NEWtype = request.getParameter("NEWtype");
 		String NEWimg = request.getParameter("NEWimg");
-		
-		JDBCProductDAO dao = new JDBCProductDAO();
     	
     	boolean productUP = false;
 		if(OLDnameProd!=null && OLDnameProd.length()>4 && OLDprice!=null && OLDprice.length()>0 &&
@@ -37,7 +37,7 @@ public class ProductUpdateServlet extends HttpServlet {
 		   NEWnameProd!=null && NEWnameProd.length()>4 && NEWprice!=null && NEWprice.length()>0 && 
 		   NEWtype !=null && NEWtype.length()>3 && NEWimg!=null && NEWimg.length()>3){
 			try{
-				for(Product x : dao.getAllProducts()){
+				for(Product x : pService.getAllProducts()){
 					if(x.getName().equals(OLDnameProd)&&x.getPrice().equals(OLDprice)&&
 							x.getType().equals(OLDtype)&&x.getImg().equals(OLDimg)) {
 						productUP=true;
@@ -55,7 +55,7 @@ public class ProductUpdateServlet extends HttpServlet {
 		   NEWtype !=null && NEWtype.length()>3 && NEWimg!=null && NEWimg.length()>3){
 			try {
 				Product NEWproduct = new Product(NEWnameProd, NEWprice, NEWtype, NEWimg);
-				dao.updateProduct(dao.getProduct(OLDnameProd, OLDprice, OLDtype, OLDimg), NEWproduct);
+				pService.updateProduct(pService.getProduct(OLDnameProd, OLDprice, OLDtype, OLDimg), NEWproduct);
 				
 				response.sendRedirect("http://localhost:8080/ua.shop.vitaly/AdminMenu.jsp");
 			} catch (Exception e) {

@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.shop.vitaly.models.Product.Product;
-import ua.shop.vitaly.models.Product.DAO.JDBCProductDAO;
 import ua.shop.vitaly.models.user.User;
+import ua.shop.vitaly.services.Product.ProductService;
 
 @WebServlet()
 public class ProductCardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private ProductService pService = new ProductService();
+	
     public ProductCardServlet() {
         super();
     }
@@ -25,11 +26,10 @@ public class ProductCardServlet extends HttpServlet {
 		
 		User user =(User) request.getSession().getAttribute("user");
 		int id = user.getId(); 
-		JDBCProductDAO dao =new JDBCProductDAO();
 		ArrayList<Product> basketList =null;
 		
 		try {
-			 basketList = dao.getFromBasket(id);
+			 basketList = pService.getFromBasket(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

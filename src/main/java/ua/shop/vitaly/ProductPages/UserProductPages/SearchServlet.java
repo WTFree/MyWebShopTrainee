@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.shop.vitaly.models.Product.Product;
-import ua.shop.vitaly.models.Product.DAO.JDBCProductDAO;
+import ua.shop.vitaly.services.Product.ProductService;
 
 @WebServlet()
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private ProductService pService = new ProductService();
+	
     public SearchServlet() {
         super();
     }
@@ -23,9 +24,8 @@ public class SearchServlet extends HttpServlet {
 	
 		String name = request.getParameter("name");	
 		ArrayList<Product> itemList = null;
-		JDBCProductDAO dao = new JDBCProductDAO();
 		try {
-			itemList = dao.getAllProductsByName(name);
+			itemList = pService.getAllProductsByName(name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

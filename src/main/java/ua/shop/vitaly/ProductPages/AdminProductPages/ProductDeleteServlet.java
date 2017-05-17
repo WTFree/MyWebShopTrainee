@@ -9,29 +9,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.shop.vitaly.models.Product.Product;
-import ua.shop.vitaly.models.Product.DAO.JDBCProductDAO;
+import ua.shop.vitaly.services.Product.ProductService;
 
 @WebServlet()
 public class ProductDeleteServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-   public ProductDeleteServlet() {
-        super();
+    private static final long serialVersionUID = 1L;
+    private ProductService pService = new ProductService();    
+
+   
+    public ProductDeleteServlet() {
+         super();
     }
 
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	   JDBCProductDAO dao = new JDBCProductDAO();
 	   String nameProd = request.getParameter("nameProd");
        String price = request.getParameter("price");
 	   String type = request.getParameter("type");
 	   String img = request.getParameter("img");
 	   
-	   boolean productUP = false;
-	   if(nameProd!=null && nameProd.length()>4 && price!=null && price.length()>0 &&
+	    boolean productUP = false;
+	    if(nameProd!=null && nameProd.length()>4 && price!=null && price.length()>0 &&
 			   type !=null && type.length()>3 && img!=null && img.length()>3){
 				try{
-					for(Product x : dao.getAllProducts()){
+					for(Product x : pService.getAllProducts()){
 						if(x.getName().equals(nameProd) && x.getPrice().equals(price)&&
 						   x.getType().equals(type) && x.getImg().equals(img)) {
 							productUP=true;
@@ -41,26 +42,26 @@ public class ProductDeleteServlet extends HttpServlet {
 				}
 				catch(Exception e){
 					e.getStackTrace();
-				}
-	   }else{
-			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorNotValidFields.jsp").forward(request, response);
-	   }
-	   if(productUP==true && 
-		  nameProd!=null && nameProd.length()>4 && price!=null && price.length()>0 &&
-		  type !=null && type.length()>3 && img!=null && img.length()>3){
+		 		}
+	    }else{
+		   request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorNotValidFields.jsp").forward(request, response);
+	    }
+	    if(productUP==true && 
+		   nameProd!=null && nameProd.length()>4 && price!=null && price.length()>0 &&
+		   type !=null && type.length()>3 && img!=null && img.length()>3){
 		   
-		   try {
-			dao.deleteProduct(dao.getProduct(nameProd, price, type, img));
-		   } catch (Exception e) {
-			e.printStackTrace();
-		   }
-		   response.sendRedirect("http://localhost:8080/ua.shop.vitaly/AdminMenu.jsp");
-		   
-	   }
-	   else{
-			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorProductDelete.jsp").include(request, response);
-	   }
+		    try {
+		    	pService.deleteProduct(pService.getProduct(nameProd, price, type, img));
+		    } catch (Exception e) {
+			 e.printStackTrace();
+		    }
+		    response.sendRedirect("http://localhost:8080/ua.shop.vitaly/AdminMenu.jsp");
+		    
+	    }
+	    else{
+	 		request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorProductDelete.jsp").include(request, response);
+	    }
 	   
-   }
+    }
 
 }
