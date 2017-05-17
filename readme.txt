@@ -14,4 +14,4 @@
 	    
             3) 
 
-—силка на роботу проекту: https://www.youtube.com/watch?v=rdqAHOOQiLc ;
+—силка на роботу проекту: https://www.youtube.com/watch?v=PP6ghVI7RXo ;
