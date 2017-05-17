@@ -1,7 +1,7 @@
+ua\shop\vitaly\filters\UserFilter.class
 ua\shop\vitaly\ProductPages\AdminProductPages\ProductDeleteServlet.class
 ua\shop\vitaly\services\User\IUserService.class
 ua\shop\vitaly\GeneralUsersPage\RegistrationServlet.class
-ua\shop\vitaly\controllers\AdminFilter.class
 ua\shop\vitaly\models\user\NoSuchUserException.class
 ua\shop\vitaly\ProductPages\ProductCardPages\ProductCardServlet.class
 ua\shop\vitaly\models\Product\Product.class
@@ -9,6 +9,7 @@ ua\shop\vitaly\models\Product\NoSuchProductException.class
 ua\shop\vitaly\ProductPages\ProductCardPages\AddToCardServlet.class
 ua\shop\vitaly\models\Product\DAO\IProductDAO.class
 ua\shop\vitaly\models\user\DAO\JDBCUserDAO.class
+ua\shop\vitaly\filters\AdminFilter.class
 ua\shop\vitaly\GeneralUsersPage\LogoutServlet.class
 ua\shop\vitaly\controllers\UserController.class
 ua\shop\vitaly\MainMenu\ProductVIEW.class
@@ -18,7 +19,6 @@ ua\shop\vitaly\ProductPages\ProductCardPages\RemoveFromCardServlet.class
 ua\shop\vitaly\models\user\UserAuth.class
 ua\shop\vitaly\ProductPages\AdminProductPages\ProductUpdateServlet.class
 ua\shop\vitaly\ProductPages\UserProductPages\SearchServlet.class
-ua\shop\vitaly\controllers\UserFilter.class
 ua\shop\vitaly\models\Product\DAO\JDBCProductDAO.class
 ua\shop\vitaly\services\Product\ProductService.class
 ua\shop\vitaly\models\user\User.class

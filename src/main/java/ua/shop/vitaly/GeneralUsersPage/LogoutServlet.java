@@ -17,7 +17,7 @@ public class LogoutServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
+		request.getSession().removeAttribute("user");;
 		response.sendRedirect("http://localhost:8080/ua.shop.vitaly/");
 	}
 

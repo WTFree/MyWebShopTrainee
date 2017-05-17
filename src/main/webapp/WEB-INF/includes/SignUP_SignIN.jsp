@@ -29,7 +29,7 @@
 
 		</c:when>
 		<c:otherwise>
-			 <form method = "post" action ="logout">
+			 <form method = "post" action ="${pageContext.request.contextPath}/logout">
 			 	<div style="float:left; margin-right:15px;margin-top: 5px;">
 			 		<b style="font-size:14px;">${user.login}</b>
 			 		<a href="${pageContext.request.contextPath}/productcard" class="active">

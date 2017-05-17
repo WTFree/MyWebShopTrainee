@@ -1,7 +1,6 @@
 package ua.shop.vitaly.ProductPages.AdminProductPages;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,10 +46,7 @@ public class ProductUpdateServlet extends HttpServlet {
 				}
 			}catch(Exception e){e.getStackTrace();}
 		}else{
-			request.getRequestDispatcher("/ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("<br><br><br><br><br><br><br><br><br><br><br><br><br><center><h3 text-align='center'>Fields weren't correct</h3></center>");
-			out.close();
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorNotValidFields.jsp").forward(request, response);
 		}
 		if(productUP==true&&
 		   OLDnameProd!=null && OLDnameProd.length()>4 && OLDprice!=null && OLDprice.length()>0 &&
@@ -67,10 +63,7 @@ public class ProductUpdateServlet extends HttpServlet {
 			}
 		}
 		else{
-			request.getRequestDispatcher("ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("OLD Product is incorrect");
-			out.close();
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorProductUpdate.jsp").include(request, response);
 		}
 		
     }

@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ua.shop.vitaly.models.user.DAO.IUserDAO;
+import ua.shop.vitaly.services.User.IUserService;
 
 public class UserAuth {
 	
@@ -14,11 +14,11 @@ public class UserAuth {
     private HttpSession httpSession;
 
     @Autowired
-    private IUserDAO userDAO;
+    private IUserService userService;
 
     public boolean login(String login, String password) {
         try {
-            httpSession.setAttribute(SESSION_TAG, userDAO.getUser(login, password));
+            httpSession.setAttribute(SESSION_TAG, userService.getUser(login, password));
         } catch (Exception e) {
             return false;
         }

@@ -1,7 +1,6 @@
 package ua.shop.vitaly.ProductPages.AdminProductPages;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,11 +43,8 @@ public class ProductDeleteServlet extends HttpServlet {
 					e.getStackTrace();
 				}
 	   }else{
-			request.getRequestDispatcher("/ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("<br><br><br><br><br><br><br><br><br><br><br><br><br><center><h3 text-align='center'>Fields weren't correct</h3></center>");
-			out.close();
-		}
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorNotValidFields.jsp").forward(request, response);
+	   }
 	   if(productUP==true && 
 		  nameProd!=null && nameProd.length()>4 && price!=null && price.length()>0 &&
 		  type !=null && type.length()>3 && img!=null && img.length()>3){
@@ -62,15 +58,7 @@ public class ProductDeleteServlet extends HttpServlet {
 		   
 	   }
 	   else{
-			request.getRequestDispatcher("/ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			try{ 
-				out.println("<br><br><br><br><br><br><br><br><br><br><br><br><br><center><h3> Product hasn't register yet</h3></center>");
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-			out.close();
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorProductDelete.jsp").include(request, response);
 	   }
 	   
    }

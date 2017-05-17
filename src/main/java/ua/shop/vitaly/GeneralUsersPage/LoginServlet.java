@@ -1,7 +1,6 @@
 package ua.shop.vitaly.GeneralUsersPage;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,10 +27,7 @@ public class LoginServlet extends HttpServlet {
 		User user = null;
 		
 		if(login.length()<4 || password.length()<4){
-			request.getRequestDispatcher("ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("<br><br><br><br><br><br><br><br><br><br><br><br><br><center><h3>Your login or password is invalid</h3></center>");
-			out.close();
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorNotValidFields.jsp").forward(request, response);
 		}else{
 			try{
 				for(User x : dao.getAllUsers()){
@@ -51,10 +47,8 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/ua.shop.vitaly/");
 		}
 		else{
-			request.getRequestDispatcher("ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("<br><br><br><br><br><br><br><br><br><br><br><br><br><center><h3>User has not register now </h3></center>");
-			out.close();
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorUserLogin.jsp").include(request, response);
+
 		}
 	}
 }

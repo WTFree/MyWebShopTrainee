@@ -20,12 +20,12 @@ C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\sh
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\models\user\UserAuth.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\services\User\IUserService.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\GeneralUsersPage\LoginServlet.java
-C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\controllers\UserFilter.java
+C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\filters\UserFilter.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\models\user\DAO\IUserDAO.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\ProductPages\AdminProductPages\ProductUpdateServlet.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\services\Product\IProductService.java
+C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\filters\AdminFilter.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\models\Product\Product.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\ProductPages\ProductCardPages\ProductCardServlet.java
-C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\controllers\AdminFilter.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\models\Product\NoSuchProductException.java
 C:\віталіка папочка\eclipseNEON\NewMainFolder\ua.shop.vitaly\src\main\java\ua\shop\vitaly\models\user\DAO\JDBCUserDAO.java

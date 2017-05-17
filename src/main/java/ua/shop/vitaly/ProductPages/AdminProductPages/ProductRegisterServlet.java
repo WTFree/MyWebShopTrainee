@@ -1,7 +1,6 @@
 package ua.shop.vitaly.ProductPages.AdminProductPages;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,10 +41,7 @@ public class ProductRegisterServlet extends HttpServlet {
 			}catch(Exception e){e.getStackTrace();}
 		}
 		else{
-			request.getRequestDispatcher("/ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("<br><br><br><br><br><br><br><br><br><br><br><br><br><center><h3 text-align='center'>Fields weren't correct</h3></center>");
-			out.close();
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorNotValidFields.jsp").forward(request, response);		
 		}
 		if(productUP==false && 
 		   nameProd!=null && nameProd.length()>4 && price!=null && price.length()>0 &&
@@ -57,16 +53,7 @@ public class ProductRegisterServlet extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/ua.shop.vitaly/AdminMenu.jsp");
 		}
 		else{
-			
-			request.getRequestDispatcher("/ErrorPage.jsp").include(request, response);
-			PrintWriter out = response.getWriter();
-			try{ 
-				out.println("<br><br><br><br><br><br><br><br><br><br><br><br><br><center><h3>"+dao.getProduct(nameProd, price, type, img).toString()+" Product has already register</h3></center>");
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-			out.close();
+			request.getRequestDispatcher("/WEB-INF/includes/errors/ErrorProductRegister.jsp").include(request, response);
 		}
 	}	
 }

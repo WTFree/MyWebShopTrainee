@@ -2,7 +2,7 @@
 <div class="modal-window-login">
   <div class="close-login">X</div>
   <p class="validateTips"><font size="3">Write your personal datas</font></p>
-  <form method = "post" action ="login">
+  <form method = "post" action ="${pageContext.request.contextPath}/login">
     <fieldset>
     <div class="main-login">
       <div class="field-login">

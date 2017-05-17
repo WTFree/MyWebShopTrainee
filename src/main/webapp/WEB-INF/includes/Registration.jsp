@@ -2,7 +2,7 @@
 <div class="modal-window-registration">
   <div class="close-registration">X</div>
   <p class="validateTips"><font size="3">All form fields are required.</font></p>
-  <form method = "post" action ="registration">
+  <form method = "post" action ="${pageContext.request.contextPath}/registration">
     <fieldset>
     <div class="main-registration">
       <div class="field-registration">

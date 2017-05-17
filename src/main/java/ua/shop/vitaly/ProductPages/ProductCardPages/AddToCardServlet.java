@@ -25,18 +25,15 @@ public class AddToCardServlet extends HttpServlet {
 	
 		String productID = request.getParameter("productID");
 		User user = (User) request.getSession().getAttribute("user");
-		
-		String firstRedirectUrl = request.getContextPath()+"/ProductID?id="+productID;
-		response.sendRedirect(firstRedirectUrl);
 
 		JDBCProductDAO dao = new JDBCProductDAO();
 		
-		boolean prodUP = false;
+		int count = 0; 
 		try {
 			for(Product x : dao.getAllProducts()){
 				
 				if (x.getId()==Integer.parseInt(productID)){
-					prodUP = true;
+					count++;
 					break;
 				}
 				
@@ -46,7 +43,9 @@ public class AddToCardServlet extends HttpServlet {
 			response.sendRedirect("ErrorPage.jsp");
 		}
 
-		if(prodUP=true){
+		if(count !=0){
+			String firstRedirectUrl = request.getContextPath()+"/ProductID?id="+productID;
+			response.sendRedirect(firstRedirectUrl);
 			dao.AddToBasket(user.getId(), Integer.parseInt(productID));
 		}else{response.sendRedirect("ErrorPage.jsp");}
 	}
