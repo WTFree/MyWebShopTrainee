@@ -33,12 +33,12 @@ public class RemoveFromCardServlet extends HttpServlet {
 		response.sendRedirect(firstRedirectUrl);
 		JDBCProductDAO dao = new JDBCProductDAO();
 		
-		boolean prodUP = false;
+		int count = 0;
 		try {
 			for(Product x : dao.getAllProducts()){
 				
 				if (x.getId()==Integer.parseInt(prodID)){
-					prodUP = true;
+					count++;
 					break;
 				}
 				
@@ -46,7 +46,7 @@ public class RemoveFromCardServlet extends HttpServlet {
 		} catch (Exception e) {
 			response.sendRedirect("ErrorPage.jsp");
 		}
-		if(prodUP=true){
+		if(count!=0){
 			dao.RemoveFromBasket(user.getId(), Integer.parseInt(prodID));
 		}else{response.sendRedirect("ErrorPage.jsp");}
 		
